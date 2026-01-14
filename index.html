@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Smart App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+*{box-sizing:border-box;font-family:system-ui;}
+body{margin:0;background:#f4f5f7;}
+
+.topbar{
+position:fixed;top:0;width:100%;background:#fff;
+display:flex;justify-content:space-between;
+padding:12px;box-shadow:0 2px 6px rgba(0,0,0,.1);z-index:10;
+}
+.topbar input{display:none;padding:6px 12px;border-radius:20px;border:none;background:#eee;}
+
+.options{margin-top:65px;display:flex;overflow-x:auto;padding:10px;gap:10px;}
+.options button{
+padding:10px 18px;border:none;border-radius:20px;
+background:#ddd;font-weight:bold;white-space:nowrap;
+}
+.options .active{background:#000;color:#fff;}
+
+.category{padding:10px;}
+.category select{width:100%;padding:10px;border-radius:10px;}
+
+.list{padding:10px;}
+.card{
+background:#fff;padding:15px;border-radius:12px;
+margin-bottom:12px;box-shadow:0 4px 8px rgba(0,0,0,.05);
+}
+.card h4{margin:0 0 6px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div><a href="menu.html">☰</a> <b>Smart App</b></div>
+  <div>
+    <input id="search" placeholder="Search..." onkeyup="render()">
+    <span onclick="toggleSearch()">🔍</span>
+    <span onclick="shareApp()">⧉</span>
+  </div>
+</div>
+
+<div class="options">
+  <button class="active" onclick="setMode('Home',this)">Home</button>
+  <button onclick="setMode('Tools',this)">Tools</button>
+  <button onclick="setMode('Blogs',this)">Blogs</button>
+  <button onclick="setMode('Trending',this)">Trending</button>
+</div>
+
+<div class="category">
+  <select id="category" onchange="render()"></select>
+</div>
+
+<div class="list" id="list"></div>
+
+<script>
+const modes={
+ Home:["All","AI","Tools","News"],
+ Tools:["All","Downloader","Converter","Generator"],
+ Blogs:["All","Tech","AI","Earning"],
+ Trending:["All","Popular","Hot","New"]
+};
+
+const items=[
+{title:"ChatGPT Guide",desc:"AI blog",mode:"Blogs",cat:"AI"},
+{title:"Video Downloader",desc:"Tool",mode:"Tools",cat:"Downloader"},
+{title:"Startup News",desc:"Latest",mode:"Home",cat:"News"},
+{title:"Image Converter",desc:"Convert images",mode:"Tools",cat:"Converter"},
+{title:"Earn With AI",desc:"Blog",mode:"Blogs",cat:"Earning"},
+{title:"Trending Tool",desc:"Hot tool",mode:"Trending",cat:"Hot"}
+];
+
+let currentMode="Home";
+
+function setMode(mode,btn){
+currentMode=mode;
+document.querySelectorAll(".options button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+loadCategories();
+render();
+}
+
+function loadCategories(){
+const select=document.getElementById("category");
+select.innerHTML="";
+modes[currentMode].forEach(c=>{
+select.innerHTML+=`<option>${c}</option>`;
+});
+}
+
+function render(){
+const list=document.getElementById("list");
+list.innerHTML="";
+const cat=document.getElementById("category").value;
+const q=document.getElementById("search").value.toLowerCase();
+
+items.forEach(i=>{
+if(i.mode==currentMode && (cat=="All"||i.cat==cat) &&
+(i.title.toLowerCase().includes(q)||i.desc.toLowerCase().includes(q))){
+list.innerHTML+=`
+<div class="card">
+<h4>${i.title}</h4>
+<p>${i.desc}</p>
+<small>${i.cat}</small>
+</div>`;
+}
+});
+}
+
+function toggleSearch(){
+const s=document.getElementById("search");
+s.style.display=s.style.display=="block"?"none":"block";
+s.focus();
+}
+
+function shareApp(){
+const text="Try this Smart App for AI & Tools: https://adityasingh701.github.io/SmartAppUI/";
+navigator.share? navigator.share({text:text,url:"https://adityasingh701.github.io/SmartAppUI/"}):alert(text);
+}
+
+loadCategories();
+render();
+</script>
+
+</body>
+</html>
+
