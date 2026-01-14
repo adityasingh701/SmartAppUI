@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart App UI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family: system-ui, sans-serif;
+}
+
+body{
+  background:#f5f6fa;
+}
+
+/* ===== TOP BAR ===== */
+.topbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  z-index:1000;
+}
+
+.topbar .left,
+.topbar .right{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.topbar input{
+  display:none;
+  border:none;
+  outline:none;
+  padding:6px 10px;
+  border-radius:20px;
+  background:#eee;
+}
+
+/* ===== HORIZONTAL OPTIONS ===== */
+.options{
+  margin-top:70px;
+  display:flex;
+  overflow-x:auto;
+  gap:10px;
+  padding:10px;
+}
+
+.options button{
+  flex-shrink:0;
+  padding:10px 18px;
+  border:none;
+  border-radius:20px;
+  background:#ddd;
+  font-weight:bold;
+}
+
+.options button.active{
+  background:#000;
+  color:white;
+}
+
+/* ===== CATEGORY ===== */
+.category{
+  padding:10px;
+}
+
+.category select{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+}
+
+/* ===== LIST ===== */
+.list{
+  padding:10px;
+}
+
+.card{
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:12px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.05);
+}
+
+.card h4{
+  margin-bottom:6px;
+}
+
+.tag{
+  font-size:12px;
+  color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="left">
+    ☰
+    <strong>Smart App</strong>
+  </div>
+  <div class="right">
+    <input id="searchBox" placeholder="Search..." onkeyup="filterItems()">
+    <span onclick="toggleSearch()">🔍</span>
+    <span>⧉</span>
+  </div>
+</div>
+
+<!-- OPTIONS -->
+<div class="options" id="optionBar">
+  <button class="active" onclick="setOption('All',this)">Home</button>
+  <button onclick="setOption('AI',this)">AI</button>
+  <button onclick="setOption('Tools',this)">Tools</button>
+  <button onclick="setOption('News',this)">News</button>
+</div>
+
+<!-- CATEGORY -->
+<div class="category">
+  <select id="categoryFilter" onchange="filterItems()">
+    <option value="All">All Categories</option>
+    <option value="AI">AI</option>
+    <option value="Tools">Tools</option>
+    <option value="News">News</option>
+  </select>
+</div>
+
+<!-- LIST -->
+<div class="list" id="itemList"></div>
+
+<script>
+const data = [
+  {title:"ChatGPT Tricks",desc:"AI tips for productivity",cat:"AI"},
+  {title:"Best AI Tools",desc:"Top websites for work",cat:"AI"},
+  {title:"Video Downloader",desc:"Online tool",cat:"Tools"},
+  {title:"Image Compressor",desc:"Shrink photos",cat:"Tools"},
+  {title:"Tech News",desc:"Latest updates",cat:"News"},
+  {title:"AI Startups",desc:"Future tech",cat:"News"}
+];
+
+let currentOption="All";
+
+function render(){
+  const list=document.getElementById("itemList");
+  list.innerHTML="";
+  const search=document.getElementById("searchBox").value.toLowerCase();
+  const cat=document.getElementById("categoryFilter").value;
+
+  data.forEach(item=>{
+    if(
+      (currentOption=="All" || item.cat==currentOption) &&
+      (cat=="All" || item.cat==cat) &&
+      (item.title.toLowerCase().includes(search) || item.desc.toLowerCase().includes(search))
+    ){
+      list.innerHTML+=`
+      <div class="card">
+        <h4>${item.title}</h4>
+        <p>${item.desc}</p>
+        <div class="tag">${item.cat}</div>
+      </div>`;
+    }
+  });
+}
+
+function setOption(opt,btn){
+  currentOption=opt;
+  document.querySelectorAll(".options button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  render();
+}
+
+function toggleSearch(){
+  const box=document.getElementById("searchBox");
+  box.style.display = box.style.display=="block"?"none":"block";
+  box.focus();
+}
+
+function filterItems(){
+  render();
+}
+
+render();
+</script>
+
+</body>
+</html>
+    
