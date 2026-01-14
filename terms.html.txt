@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Terms & Conditions – Smart App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:system-ui;background:#f3f4f6;margin:0;padding:20px;}
+.card{background:white;padding:20px;border-radius:14px;max-width:900px;margin:auto;box-shadow:0 8px 16px rgba(0,0,0,.05);}
+h1,h2{color:#111;}
+p{color:#333;line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="card">
+
+
+<h1>Terms & Conditions</h1>
+
+
+<p>By using Smart App, you agree to follow these Terms & Conditions. If you do not agree, please do not use the application.</p>
+
+
+<h2>Use of the App</h2>
+<p>Smart App provides access to AI tools, tech content, and useful digital resources. You may use this app only for lawful purposes. You agree not to misuse the app, attempt to hack it, or use it for illegal activities.</p>
+
+
+<h2>Content Disclaimer</h2>
+<p>We do our best to provide accurate and useful content, but we do not guarantee that all information will always be complete, correct, or up to date. Users should verify important information independently.</p>
+
+
+<h2>External Links</h2>
+<p>Smart App may contain links to third-party websites. We do not control these sites and are not responsible for their content or services.</p>
+
+
+<h2>Limitation of Liability</h2>
+<p>Smart App and its developers will not be responsible for any loss, damage, or issues caused by using this app or the linked services.</p>
+
+
+<h2>User Responsibility</h2>
+<p>You are responsible for how you use the information and tools provided. Any actions you take based on this app are at your own risk.</p>
+
+
+<h2>Changes to the Terms</h2>
+<p>We may update these Terms & Conditions at any time. Continued use of the app means you accept the changes.</p>
+
+
+<h2>Contact</h2>
+<p>If you have any questions about these Terms, contact us at:<br>
+<strong>Email:</strong> adityasinghworks1612@gmail.com<br>
+<strong>Instagram:</strong> instagram.com/shree_99_singh
+</p>
+
+
+</div>
+</body>
+</html>
+

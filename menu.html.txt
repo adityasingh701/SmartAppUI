@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Menu – Smart App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:system-ui, -apple-system, sans-serif;
+}
+
+
+body{
+  margin:0;
+  background:#f3f4f6;
+}
+
+
+/* Top Bar */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px;
+  background:#ffffff;
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+
+
+.topbar button{
+  border:none;
+  background:#e5e7eb;
+  padding:8px 14px;
+  border-radius:8px;
+  font-weight:600;
+}
+
+
+.container{
+  padding:16px;
+}
+
+
+/* Section Cards */
+.section{
+  background:white;
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:16px;
+  box-shadow:0 6px 12px rgba(0,0,0,0.05);
+}
+
+
+.section h3{
+  margin-top:0;
+  margin-bottom:8px;
+}
+
+
+.section p{
+  color:#444;
+  line-height:1.6;
+  font-size:14px;
+}
+
+
+/* Buttons */
+.links button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#111827;
+  color:white;
+  font-weight:600;
+  margin-top:10px;
+}
+
+
+/* Footer */
+.footer{
+  text-align:center;
+  padding:20px;
+  color:#555;
+  font-size:14px;
+}
+</style>
+</head>
+
+
+<body>
+
+
+<div class="topbar">
+  <button onclick="history.back()">← Back</button>
+  <strong>Smart App</strong>
+  <div></div>
+</div>
+
+
+<div class="container">
+
+
+  <div class="section">
+    <h3>About Us</h3>
+    <p>
+      Smart App is built to make discovering useful AI tools, tech resources, and smart digital content simple, fast, and reliable.
+      We focus on creating a clean, app-like experience where users can find valuable tools and information without unnecessary clutter.
+      This platform is designed for students, creators, freelancers, and anyone who wants to use technology more effectively.
+    </p>
+  </div>
+
+
+  <div class="section">
+    <h3>Contact Us</h3>
+    <p>
+      Have questions, suggestions, or found an issue? You can reach us here:
+      <br><br>
+      <strong>Email:</strong> adityasinghworks1612@gmail.com  
+      <br>
+      <strong>Instagram:</strong> instagram.com/shree_99_singh
+    </p>
+  </div>
+
+
+  <div class="section links">
+    <button onclick="alert('Privacy Policy page will be added')">Privacy Policy</button>
+    <button onclick="alert('Terms & Conditions page will be added')">Terms & Conditions</button>
+  </div>
+
+
+</div>
+
+
+<div class="footer">
+  Made with ❤️ by Aditya Singh
+</div>
+
+
+</body>
+</html>
+
